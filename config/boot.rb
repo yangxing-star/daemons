@@ -6,8 +6,6 @@ PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
 require 'bundler/setup'
 Bundler.require(:default, RACK_ENV)
 
-require './config/initializers/sneakers'
-
 ##
 # ## Enable devel logging
 #
@@ -42,6 +40,8 @@ require './config/initializers/sneakers'
 Padrino.before_load do
   ConfigEnv.init("#{__dir__}/env.rb")
 end
+
+require './config/initializers/sneakers'
 
 ##
 # Add your after (RE)load hooks here
