@@ -1,0 +1,126 @@
+enum SyncType
+{
+    ADDUSER                       = 0;
+    REFRESHUSER                   = 1;
+    USERCHECKONLINE               = 2;
+    ADDBLACKLIST                  = 3;
+    REMOVEBLACKLIST               = 4;
+    BLOCKUSER                     = 5;
+    UNBLOCKUSER                   = 6;
+    QUERYBLOCKUSER                = 7;
+    CREATEGROUP                   = 8;
+    DISMISSGROUP                  = 9;
+    JOINGROUP                     = 10;
+    QUITGROUP                     = 11;
+    KICKOUTGROUP                  = 12;
+    QUERYGROUPUSER                = 13;
+    SYNCGROUP                     = 14;
+    GROUPUSERGAGADD               = 15;
+    GROUPUSERGAGROLLBACK          = 16;
+    GROUPUSERGAGLIST              = 17;
+    ADDWORDFILTER                 = 18;
+    DELETEWORDFILTER              = 19;
+    WORDFILTERLIST                = 20;
+}
+
+message IMSyncRequest
+{
+    required SyncType type        = 1;
+    required string data          = 2;
+    optional string callback_data = 3;
+}
+
+message IMSyncResponse
+{
+    required int32 error_code     = 1;
+    required string error_message = 2; 
+    required SyncType type        = 3;
+    required string raw_data      = 4;
+    required string extra_data    = 5;
+}
+
+message IMSyncAddUser
+{
+    required string user_id       = 1;
+    required string user_name     = 2;
+    required string portrait_uri  = 3;
+    required string user_type     = 4;
+}
+
+message IMSyncRefreshUser
+{
+    required string user_id       = 1;
+    optional string user_name     = 2;
+    optional string portrait_uri  = 3;
+}
+
+message IMSyncAddBlacklist
+{
+    required string user_id       = 1;
+    required string black_user_id = 2;
+}
+
+message IMSyncRemoveBlacklist
+{
+    required string user_id       = 1;
+    required string black_user_id = 2;
+}
+
+message IMSyncAddUserExtra
+{
+    required string token         = 1;
+}
+
+message IMSyncCreateGroup
+{
+    required string group_id      = 1;
+    required string group_name    = 2;
+    repeated string user_ids      = 3;
+}
+
+message IMSyncKickOutGroup
+{
+    required string group_id      = 1;
+    repeated string user_ids      = 2;
+    required bool   enable_ms     = 3;
+    optional string attach        = 4;
+}
+
+message IMSyncDismissGroup
+{
+    required string group_id      = 1;
+    required string user_id       = 2;
+    required bool   enable_ms     = 3;
+    optional string attach        = 4;
+}
+
+message IMSyncJoinGroup
+{
+    required string group_id      = 1;
+    optional string group_name    = 2;
+    repeated string user_ids      = 3;
+}
+
+message IMSyncQuitGroup
+{
+    required string group_id      = 1;
+    required string user_id       = 2;
+}
+
+message IMSyncGroupUserGagAdd
+{
+    required string user_id       = 1;
+    required string group_id      = 2;
+    optional int32 minute         = 3;
+}
+
+message IMSyncGroupUserGagRollback
+{
+    required string user_id       = 1;
+    required string group_id      = 2;
+}
+
+message IMSyncGroupUserGagList
+{
+    required string group_id      = 1;
+}
