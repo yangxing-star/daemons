@@ -1,6 +1,8 @@
 # Defines our constants
 RACK_ENV = ENV['RACK_ENV'] ||= 'development' unless defined?(RACK_ENV)
 PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
+PADRINO_LOGGER = { testing: { log_level: :debug, stream: :to_file } } if RACK_ENV == 'testing'
+PADRINO_LOGGER = { staging: { log_level: :debug, stream: :to_file } } if RACK_ENV == 'staging'
 
 # Load our dependencies
 require 'bundler/setup'
