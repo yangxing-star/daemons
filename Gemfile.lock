@@ -62,7 +62,7 @@ GEM
     rack-protection (1.5.3)
       rack
     rake (11.1.1)
-    rongyun (1.1.0)
+    rongyun (1.2.0)
     ruby_protobuf (0.4.11)
     serverengine (1.5.11)
       sigdump (~> 0.2.2)
