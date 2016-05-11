@@ -97,7 +97,7 @@ end
 class IMSyncQuitGroup < ::Protobuf::Message
   defined_in __FILE__
   required :string, :group_id, 1
-  required :string, :user_id, 2
+  repeated :string, :user_ids, 2
 end
 class IMSyncGroupUserGagAdd < ::Protobuf::Message
   defined_in __FILE__

@@ -48,7 +48,7 @@ class IMGroupSyncWorker < BaseWorker
   def quit_group(data)
     msg = IMSyncQuitGroup.new
     msg.parse_from_string(data)
-    result = client.group_quit(msg.user_id, msg.group_id)
+    result = client.group_quit(msg.user_ids, msg.group_id)
     if result.success
       Sneakers.logger.info("RongCloud response(quit_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::QUITGROUP, result, data).to_s, TO_QUEUE_NAME)
