@@ -28,6 +28,8 @@ class IMGroupSyncWorker < BaseWorker
     if result.success
       Sneakers.logger.info("RongCloud response(create_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::CREATEGROUP, result, data).to_s, TO_QUEUE_NAME)
+    else
+      Sneakers.logger.error("create_group: #{result.inspect}")
     end
   end
 
@@ -38,6 +40,8 @@ class IMGroupSyncWorker < BaseWorker
     if result.success
       Sneakers.logger.info("RongCloud response(join_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::JOINGROUP, result, data).to_s, TO_QUEUE_NAME)
+    else
+      Sneakers.logger.error("create_group: #{result.inspect}")
     end
   end
 
@@ -48,6 +52,8 @@ class IMGroupSyncWorker < BaseWorker
     if result.success
       Sneakers.logger.info("RongCloud response(quit_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::QUITGROUP, result, data).to_s, TO_QUEUE_NAME)
+    else
+      Sneakers.logger.error("quit_group: #{result.inspect}")
     end
   end
 
@@ -60,6 +66,8 @@ class IMGroupSyncWorker < BaseWorker
     if result.success
       Sneakers.logger.info("RongCloud response(kick_out_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::KICKOUTGROUP, result, data).to_s, TO_QUEUE_NAME)
+    else
+      Sneakers.logger.error("kick_out_group: #{result.inspect}")
     end
   end
 
@@ -72,6 +80,8 @@ class IMGroupSyncWorker < BaseWorker
     if result.success
       Sneakers.logger.info("RongCloud response(dismiss_group): #{result.inspect}")
       BaseWorker.send_msg(get_reponse_pkg(SyncType::DISMISSGROUP, result, data).to_s, TO_QUEUE_NAME)
+    else
+      Sneakers.logger.error("dismiss_group: #{result.inspect}")
     end
   end
 
