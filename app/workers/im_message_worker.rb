@@ -17,7 +17,7 @@ class IMMessageWorker < BaseWorker
       content = build_content(request)
       push_data = request.push_data
       push_content = request.push_content
-
+#审批" U:111:d43a5e1fb1ab3cc3f548b49fb0*L休假时间 05-13 12:27 至 05-13 13:41, 共1小时。请您及时审批。B"【待批】张舟俊 事假申请z{{"id":446,"action":"approve","sub_title":"申请时间：2016-05-13 13:41","identity":"applicant","work_flow_type":"leave"}�"【待批】张舟俊 事假申请
       result = if request.is_group
                  client.message_group_publish(from, to, type, content, push_content, push_data)
                else
@@ -44,13 +44,16 @@ class IMMessageWorker < BaseWorker
                   'RC:LBSMsg',
                   'RC:ContactNtf',
                   'RC:InfoNtf',
-                  'KLM:SystemMsg',
-                  'KLM:WuliuMsg',
-                  'KLM:ActivityMsg',
-                  'KLM:RebatesMsg',
-                  'KLM:OrderMsg',
-                  'KLM:AfterSaleMsg',
-                  'KLM:FriendMsg' ]
+                  'WM:ApprvolMsg',
+                  'WM:TaskMsg',
+                  'WM:ReportMsg',
+                  'WM:GroupMsg',
+                  'WM:BulletinMsg',
+                  'WM:FriendMsg',
+                  'WM:GroupNotifyMsg',
+                  'WM:SystemMsg',
+                  'WM:UpdateNtf',
+                  'WM:ScheduleMsg' ]
     type_list[type]
   end
 
