@@ -44,7 +44,6 @@ message IMSyncAddUser
     required string user_id       = 1;
     required string user_name     = 2;
     required string portrait_uri  = 3;
-    required string user_type     = 4;
 }
 
 message IMSyncRefreshUser
