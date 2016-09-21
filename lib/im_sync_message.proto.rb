@@ -46,7 +46,6 @@ class IMSyncAddUser < ::Protobuf::Message
   required :string, :user_id, 1
   required :string, :user_name, 2
   required :string, :portrait_uri, 3
-  required :string, :user_type, 4
 end
 class IMSyncRefreshUser < ::Protobuf::Message
   defined_in __FILE__
