@@ -1,13 +1,13 @@
 class IMMessageWorker < BaseWorker
   include Sneakers::Worker
 
-  @@queue_name = 'im.message.inbox'
+  @@queue_name = 'isc.im.message.inbox'
   FROM_QUEUE_NAME = Padrino.env == :production ? @@queue_name : "#{@@queue_name}.#{Padrino.env}"
   from_queue FROM_QUEUE_NAME
 
   def work(message)
     begin
-      Sneakers.logger.info("Receive message: #{message.to_s}")
+      Sneakers.logger.info("Received message: #{message.to_s}")
       request = IMMessage.new
       request.parse_from_string(message)
       

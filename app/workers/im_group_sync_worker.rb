@@ -1,11 +1,11 @@
 class IMGroupSyncWorker < BaseWorker
   include Sneakers::Worker
 
-  @@queue_name = 'im.group.sync'
+  @@queue_name = 'isc.im.group.sync'
   FROM_QUEUE_NAME = Padrino.env == :production ? @@queue_name : "#{@@queue_name}.#{Padrino.env}"
   from_queue FROM_QUEUE_NAME
 
-  @@to_queue_name = 'im.group.inbox'
+  @@to_queue_name = 'isc.im.group.inbox'
   TO_QUEUE_NAME = Padrino.env == :production ? @@to_queue_name : "#{@@to_queue_name}.#{Padrino.env}"
 
   def work(message)

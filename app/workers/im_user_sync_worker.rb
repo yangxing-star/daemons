@@ -1,7 +1,7 @@
 class IMSyncUserWorker < BaseWorker
   include Sneakers::Worker
 
-  @@queue_name = 'im.user.sync'
+  @@queue_name = 'isc.im.user.sync'
   FROM_QUEUE_NAME = Padrino.env == :production ? @@queue_name : "#{@@queue_name}.#{Padrino.env}"
   from_queue FROM_QUEUE_NAME
 
