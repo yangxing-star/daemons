@@ -31,7 +31,8 @@ class IMSyncRequest < ::Protobuf::Message
   defined_in __FILE__
   required :SyncType, :type, 1
   required :string, :data, 2
-  optional :string, :callback_data, 3
+  required :string, :request_id, 3
+  optional :string, :callback_data, 4
 end
 class IMSyncResponse < ::Protobuf::Message
   defined_in __FILE__
