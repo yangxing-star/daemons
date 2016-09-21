@@ -27,7 +27,7 @@ class IMSyncUserWorker < BaseWorker
     result = client.user_get_token(msg.user_id, msg.user_name, msg.portrait_uri)
     if result.success
       Sneakers.logger.info("RongCloud response: #{result.inspect}")
-      BaseWorker.send_msg(get_reponse_pkg(SyncType::ADDUSER, result, data).to_s, TO_QUEUE_NAME)
+      BaseWorker.send_msg(get_reponse_pkg(SyncType::ADDUSER, result, data, { token: result.data['token'] }).to_s, TO_QUEUE_NAME)
     else
       # retry
       Sneakers.logger.error("RongCloud response: #{result.inspect}")
