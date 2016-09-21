@@ -5,6 +5,9 @@ class IMSyncUserWorker < BaseWorker
   FROM_QUEUE_NAME = Padrino.env == :production ? @@queue_name : "#{@@queue_name}.#{Padrino.env}"
   from_queue FROM_QUEUE_NAME
 
+  @@to_queue_name = 'isc.im.user.inbox'
+  TO_QUEUE_NAME = Padrino.env == :production ? @@to_queue_name : "#{@@to_queue_name}.#{Padrino.env}"
+
   def work(message)
     begin
       Sneakers.logger.info(message.to_s)
